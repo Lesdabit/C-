@@ -8,6 +8,7 @@
 using namespace std;
 namespace plt = matplotlibcpp;
 
+
 int main()
 {
 	vector<point2d> points;
@@ -36,8 +37,9 @@ int main()
 		coor_y.push_back(points[i].y);
 	}
 
-	vector<int> tick = { 0,1,2,3,4,5,6,7,8 };
+	vector<int> tick = { 0,5,10,15,20,25,30 };
 	plt::scatter(coor_x, coor_y, 25, { {"label", "charge stop"}, {"color", "r"} });
+	plt::plot(coor_x, coor_y);
 	plt::title("Charge stop map");
 	plt::xticks(tick);
 	plt::yticks(tick);
