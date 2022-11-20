@@ -132,12 +132,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Convex_hull.cpp" />
+    <ClCompile Include="Edge.cpp" />
     <ClCompile Include="EVM2_Prog_S10959039.cpp" />
     <ClCompile Include="Point2D.cpp" />
+    <ClCompile Include="VoronoiDiagram.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\voronoi_diagram\matplotlibcpp.h" />
+    <ClInclude Include="Convex_hull.h" />
+    <ClInclude Include="Edge.h" />
     <ClInclude Include="Point2D.h" />
+    <ClInclude Include="VoronoiDiagram.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

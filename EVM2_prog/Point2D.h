@@ -2,6 +2,8 @@
 #ifndef POINT2D_H
 #define POINT2D_H
 
+#include <vector>
+
 class point2d
 {
 public:

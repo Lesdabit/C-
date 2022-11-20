@@ -1,11 +1,10 @@
 #include <iostream>
 
 #include "Convex_hull.h"
-#include "Point2D.h"
 
 using namespace std;
 
-void convex_hull(vector<point2d> coor)
+void Convex_hull::convex_hull(vector<point2d> coor)
 {
 	point2d on_hull;
 	point2d second_point;
@@ -20,20 +19,24 @@ void convex_hull(vector<point2d> coor)
 
 	while (true)
 	{
-		Convex_hull::scale.push_back(on_hull);
+		scale.push_back(on_hull);
 		next_point = coor[0];
 		for (int i = 0; i < coor.size(); i++)
 		{
 			int o = orientation(on_hull, next_point, coor[i]);
 			if ((next_point.x == on_hull.x && next_point.y == on_hull.y) || o == 1
-				|| (o == 0 && distance(on_hull, next_point) < distance(on_hull, coor[i]))) next_point = coor[i];
+				/* || (o == 0 && distance(on_hull, next_point) < distance(on_hull, coor[i]))*/) next_point = coor[i];
 		}
 		on_hull = next_point;
-		if (on_hull.x == Convex_hull::scale[0].x && on_hull.y == Convex_hull::scale[0].y) break;
+		if (on_hull.x == scale[0].x && on_hull.y == scale[0].y)
+		{
+			scale.push_back(scale[0]);
+			break;
+		}
 	}
 }
 
-int orientation(point2d on_hull, point2d next_point, point2d coor)
+int Convex_hull::orientation(point2d on_hull, point2d next_point, point2d coor)
 {
 	double m = (coor.y - next_point.y) * (next_point.x - on_hull.x) - (next_point.y - on_hull.y) * (coor.x - next_point.x);
 	if (m > 0) return 1;
@@ -41,7 +44,7 @@ int orientation(point2d on_hull, point2d next_point, point2d coor)
 	else return 0;
 }
 
-double distance(point2d next_point, point2d coor)
+double Convex_hull::distance(point2d next_point, point2d coor)
 {
 	double d = sqrt(pow(next_point.x - coor.x, 2) + pow(next_point.y - coor.y, 2));
 	return d;
