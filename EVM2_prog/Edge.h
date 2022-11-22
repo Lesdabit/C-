@@ -17,10 +17,4 @@ public:
 	edge(point2d a, point2d b, point2d mid_a, point2d mid_b);
 };
 
-class point
-{
-public:
-	vector<point2d> points;
-};
-
 #endif

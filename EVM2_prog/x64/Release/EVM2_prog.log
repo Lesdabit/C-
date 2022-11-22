@@ -1,4 +1,5 @@
-﻿  EVM2_Prog_S10959039.cpp
+﻿  Convex_hull.cpp
+  EVM2_Prog_S10959039.cpp
 C:\Users\he001\source\repos\EVM2_prog\matplotlibcpp.h(1817,57): warning C4244: '=': conversion from 'size_t' to '_Ty', possible loss of data
           with
           [
@@ -6,9 +7,11 @@ C:\Users\he001\source\repos\EVM2_prog\matplotlibcpp.h(1817,57): warning C4244: '
           ]
 C:\Users\he001\source\repos\EVM2_prog\matplotlibcpp.h(2884,38): message : see reference to function template instantiation 'bool matplotlibcpp::plot<double>(const std::vector<double,std::allocator<double>> &,const std::string &)' being compiled
 C:\Users\he001\source\repos\EVM2_prog\matplotlibcpp.h(1009,59): warning C4244: 'argument': conversion from 'const double' to 'long', possible loss of data
-C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(112,79): message : see reference to function template instantiation 'bool matplotlibcpp::scatter<double,double>(const std::vector<double,std::allocator<double>> &,const std::vector<double,std::allocator<double>> &,const double,const std::map<std::string,std::string,std::less<std::string>,std::allocator<std::pair<const std::string,std::string>>> &)' being compiled
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(127,79): message : see reference to function template instantiation 'bool matplotlibcpp::scatter<double,double>(const std::vector<double,std::allocator<double>> &,const std::vector<double,std::allocator<double>> &,const double,const std::map<std::string,std::string,std::less<std::string>,std::allocator<std::pair<const std::string,std::string>>> &)' being compiled
+  VoronoiDiagram.cpp
   Generating code
-  Previous IPDB and IOBJ mismatch, fall back to full compilation.
-  All 534 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  71 of 669 functions (10.6%) were compiled, the rest were copied from previous compilation.
+    12 functions were new in current compilation
+    38 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   EVM2_prog.vcxproj -> C:\Users\he001\source\repos\EVM2_prog\x64\Release\EVM2_prog.exe

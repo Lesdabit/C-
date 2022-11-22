@@ -11,11 +11,9 @@
 using namespace std;
 namespace plt = matplotlibcpp;
 
-
 int main()
 {
 	ifstream in("map.txt");
-	point p;
 	Convex_hull ch;
 	VoronoiDiagram vd;
 
@@ -28,7 +26,7 @@ int main()
 		for (int i = 0; i < point_n; i++)
 		{
 			in >> x >> y;
-			p.points.push_back(point2d(x, y));
+			vd.point_list.push_back(point2d(x, y));
 		}
 	}
 
@@ -42,78 +40,92 @@ int main()
 	cout << "\n\nAfter sort\n\n";
 
 	// bubble sort to sort points
-	for (int i = 0; i < p.points.size() - 1; i++)
+	for (int i = 0; i < point_n - 1; i++)
 	{
-		for (int j = 0; j < p.points.size() - i - 1; j++)
+		for (int j = 0; j < point_n - i - 1; j++)
 		{
-			if (p.points[j].x > p.points[j + 1].x)
+			if (vd.point_list[j].x > vd.point_list[j + 1].x)
 			{
-				double temp_x = p.points[j].x;
-				p.points[j].x = p.points[j + 1].x;
-				p.points[j + 1].x = temp_x;
+				double temp_x = vd.point_list[j].x;
+				vd.point_list[j].x = vd.point_list[j + 1].x;
+				vd.point_list[j + 1].x = temp_x;
 
-				double temp_y = p.points[j].y;
-				p.points[j].y = p.points[j + 1].y;
-				p.points[j + 1].y = temp_y;
+				double temp_y = vd.point_list[j].y;
+				vd.point_list[j].y = vd.point_list[j + 1].y;
+				vd.point_list[j + 1].y = temp_y;
 			}
 		}
 	}
 
-	for (int i = 0; i < p.points.size() - 1; i++)
+	for (int i = 0; i < point_n - 1; i++)
 	{
-		for (int j = 0; j < p.points.size() - i - 1; j++)
+		for (int j = 0; j < point_n - i - 1; j++)
 		{
-			if (p.points[j].x == p.points[j + 1].x && p.points[j].y > p.points[j + 1].y)
+			if (vd.point_list[j].x == vd.point_list[j + 1].x && vd.point_list[j].y > vd.point_list[j + 1].y)
 			{
-				double temp_x = p.points[j].x;
-				p.points[j].x = p.points[j + 1].x;
-				p.points[j + 1].x = temp_x;
+				double temp_x = vd.point_list[j].x;
+				vd.point_list[j].x = vd.point_list[j + 1].x;
+				vd.point_list[j + 1].x = temp_x;
 
-				double temp_y = p.points[j].y;
-				p.points[j].y = p.points[j + 1].y;
-				p.points[j + 1].y = temp_y;
+				double temp_y = vd.point_list[j].y;
+				vd.point_list[j].y = vd.point_list[j + 1].y;
+				vd.point_list[j + 1].y = temp_y;
 			}
 		}
 	}
 
 	
-	for (int i = 0; i < p.points.size(); i++)
+	
+	for (int i = 0; i < point_n; i++)
 	{
-		cout << p.points[i].x << " " << p.points[i].y << endl;
+		cout << vd.point_list[i].x << " " << vd.point_list[i].y << endl;
 	}
+	
 	
 	vector<double> coor_x;
 	vector<double> coor_y;
 
-	for (int i = 0; i < p.points.size(); i++)
+	for (int i = 0; i < point_n; i++)
 	{
 		//cout << points[i].x << " " << points[i].y << endl;
-		coor_x.push_back(p.points[i].x);
-		coor_y.push_back(p.points[i].y);
+		coor_x.push_back(vd.point_list[i].x);
+		coor_y.push_back(vd.point_list[i].y);
 	}
 
 	// convex hull
 	vector<double> scale_coor_x;
 	vector<double> scale_coor_y;
-	ch.convex_hull(p.points);
+	vector<point2d> scale = ch.convex_hull(vd.point_list);
 
-	for (int i = 0; i < ch.scale.size(); i++)
+	for (int i = 0; i < scale.size(); i++)
 	{
-		scale_coor_x.push_back(ch.scale[i].x);
-		scale_coor_y.push_back(ch.scale[i].y);
+		scale_coor_x.push_back(scale[i].x);
+		scale_coor_y.push_back(scale[i].y);
 		//cout << ch.scale[i].x << " " << ch.scale[i].y << endl;
 	}
 
-	//vector<edge> edge_list = vd.voronoi(p.points);
-	vector<point2d> edge_mid_a;
-	vector<point2d> edge_mid_b;
+	vd = vd.voronoi(vd.point_list);
+	vector<double> edge_mid_a;
+	vector<double> edge_mid_b;
+
+	for (int i = 0; i < vd.voronoi_list.size(); i++)
+	{
+		if (i % 2 == 0)
+		{
+			edge_mid_a.push_back(vd.voronoi_list[i].mid_a.x);
+			edge_mid_a.push_back(vd.voronoi_list[i].mid_a.y);
+		}
+		else
+		{
+			edge_mid_b.push_back(vd.voronoi_list[i].mid_b.x);
+			edge_mid_b.push_back(vd.voronoi_list[i].mid_b.y);
+		}
+	}
 
 	vector<int> tick = { 0,5,10,15,20,25,30 };
 	plt::scatter(coor_x, coor_y, 25, { {"label", "charge stop"}, {"color", "r"} });
-	plt::plot(scale_coor_x, scale_coor_y);
-
-	
-
+	//plt::plot(scale_coor_x, scale_coor_y);
+	plt::plot(edge_mid_a, edge_mid_b);
 	plt::title("Charge stop map");
 	plt::xticks(tick);
 	plt::yticks(tick);

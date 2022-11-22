@@ -12,17 +12,18 @@ using namespace std;
 class VoronoiDiagram
 {
 public:
+	vector<point2d> point_list;
 	vector<edge> hyper_plane_list;
 	vector<edge> voronoi_list;
 
-	vector<point2d> left_points;
-	vector<point2d> right_points;
+	VoronoiDiagram voronoi(vector<point2d> points);
+	VoronoiDiagram two_voronoi(vector<point2d> points);
+	VoronoiDiagram three_voronoi(vector<point2d> points);
+	bool isCollinear(point2d a, point2d b, point2d c);
+	vector<vector<point2d>> divide(vector<point2d> points, vector<point2d> left_points, vector<point2d> right_points);
+	VoronoiDiagram merge(VoronoiDiagram vl, VoronoiDiagram vr);
 
-	vector<edge> voronoi(vector<point2d> points);
-	vector<edge> two_voronoi(vector<point2d> points);
-	vector<edge> three_voronoi(vector<point2d> points);
-	void divide();
-	vector<edge> merge(vector<edge> vl, vector<edge> vr);
+	point2d swap(double a, double b);
 };
 
 #endif

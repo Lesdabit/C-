@@ -4,8 +4,9 @@
 
 using namespace std;
 
-void Convex_hull::convex_hull(vector<point2d> coor)
+vector<point2d> Convex_hull::convex_hull(vector<point2d> coor)
 {
+	vector<point2d> scale;
 	point2d on_hull;
 	point2d second_point;
 	point2d next_point;
@@ -25,7 +26,7 @@ void Convex_hull::convex_hull(vector<point2d> coor)
 		{
 			int o = orientation(on_hull, next_point, coor[i]);
 			if ((next_point.x == on_hull.x && next_point.y == on_hull.y) || o == 1
-				/* || (o == 0 && distance(on_hull, next_point) < distance(on_hull, coor[i]))*/) next_point = coor[i];
+				 || (o == 0 && distance(on_hull, next_point) < distance(on_hull, coor[i]))) next_point = coor[i];
 		}
 		on_hull = next_point;
 		if (on_hull.x == scale[0].x && on_hull.y == scale[0].y)
@@ -34,6 +35,7 @@ void Convex_hull::convex_hull(vector<point2d> coor)
 			break;
 		}
 	}
+	return scale;
 }
 
 int Convex_hull::orientation(point2d on_hull, point2d next_point, point2d coor)
