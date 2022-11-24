@@ -1,0 +1,15 @@
+﻿  EVM2_Prog_S10959039.cpp
+C:\Users\he001\source\repos\EVM2_prog\matplotlibcpp.h(1817,57): warning C4244: '=': conversion from 'size_t' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\he001\source\repos\EVM2_prog\matplotlibcpp.h(2884,38): message : see reference to function template instantiation 'bool matplotlibcpp::plot<double>(const std::vector<double,std::allocator<double>> &,const std::string &)' being compiled
+C:\Users\he001\source\repos\EVM2_prog\matplotlibcpp.h(1009,59): warning C4244: 'argument': conversion from 'const double' to 'long', possible loss of data
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(126,79): message : see reference to function template instantiation 'bool matplotlibcpp::scatter<double,double>(const std::vector<double,std::allocator<double>> &,const std::vector<double,std::allocator<double>> &,const double,const std::map<std::string,std::string,std::less<std::string>,std::allocator<std::pair<const std::string,std::string>>> &)' being compiled
+  Edge.cpp
+  Point2D.cpp
+  VoronoiDiagram.cpp
+C:\Users\he001\source\repos\EVM2_prog\VoronoiDiagram.cpp(131,99): error C2059: syntax error: ')'
+C:\Users\he001\source\repos\EVM2_prog\VoronoiDiagram.cpp(132,2): error C2143: syntax error: missing ';' before '{'
+  math.cpp
