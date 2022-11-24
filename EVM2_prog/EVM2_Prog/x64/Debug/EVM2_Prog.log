@@ -1,0 +1,7 @@
+﻿  EVM2_Prog_S10959039.cpp
+  Point2D.cpp
+C:\Users\he001\source\repos\EVM2_Prog\Point2D.h(17,8): error C2143: 語法錯誤: 遺漏 ';' (在 '<' 之前)
+C:\Users\he001\source\repos\EVM2_Prog\Point2D.h(17,8): error C4430: 遺漏類型規範 - 假設為 int。注意: C++ 不支援 default-int
+C:\Users\he001\source\repos\EVM2_Prog\Point2D.h(17,26): error C2238: 在 ';' 之前有未預期的語彙基元
+C:\Users\he001\source\repos\EVM2_Prog\Point2D.cpp(14,2): error C2059: 語法錯誤: '}'
+  正在產生程式碼...
