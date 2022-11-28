@@ -1,4 +1,2 @@
 ﻿  VoronoiDiagram.cpp
-C:\Users\he001\source\repos\test_voronoi\VoronoiDiagram.cpp(327,6): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\he001\source\repos\test_voronoi\VoronoiDiagram.cpp(328,1): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   test_voronoi.vcxproj -> C:\Users\he001\source\repos\test_voronoi\x64\Debug\test_voronoi.exe

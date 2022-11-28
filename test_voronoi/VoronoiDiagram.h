@@ -21,10 +21,10 @@ public:
 	VoronoiDiagram three_voronoi(vector<point2d> points);
 	bool isCollinear(point2d a, point2d b, point2d c);
 	vector<vector<point2d>> divide(vector<point2d> points, vector<point2d> left_points, vector<point2d> right_points);
-	VoronoiDiagram merge(VoronoiDiagram vl, VoronoiDiagram vr);
+	VoronoiDiagram merge(VoronoiDiagram vl, VoronoiDiagram vr, VoronoiDiagram v);
+	vector<edge> GetTangent(vector<point2d> chL, vector<point2d> chR);
 
 	point2d swap(double a, double b);
-	vector<edge> GetTangent(vector<point2d> chL, vector<point2d> chR);
 };
 
 #endif

@@ -6,8 +6,10 @@
 #include "VoronoiDiagram.h"
 #include "Convex_hull.h"
 #include "math.h"
+//#include "matplotlibcpp.h"
 
 using namespace std;
+//namespace plt = matplotlibcpp;
 Convex_hull ch;
 math m;
 
@@ -28,20 +30,30 @@ VoronoiDiagram VoronoiDiagram::voronoi(vector<point2d> points)
 		vr = voronoi(list[1]);
 		vl.point_list = list[0];
 		vr.point_list = list[1];
-		v = merge(vl, vr);
+		vector<vector<double>> x1;
+		vector<vector<double>> y1;
+		vector<vector<double>> x2;
+		vector<vector<double>> y2;
+
+		vector<double> coor_x;
+		vector<double> coor_y;
+
+		v = merge(vl, vr, v);
 	}
 	return v;
 }
 
 VoronoiDiagram VoronoiDiagram::two_voronoi(vector<point2d> points)
 {
-	VoronoiDiagram v;
 	vector<point2d> mid_point;
+	VoronoiDiagram v;
+	v.point_list.push_back(points[0]);
+	v.point_list.push_back(points[1]);
 	point2d midpoint = m.getMidpoint(points[0], points[1]);
-	point2d normal = m.getNormal(points[0], points[1]);
-	mid_point.push_back(midpoint);
-	mid_point.push_back(point2d(midpoint.x + normal.x, midpoint.y + normal.y));
-	v.voronoi_list.push_back(edge(points[0], points[1], mid_point[0], mid_point[1]));
+	point2d normal = m.Multi(m.getNormal(points[0], points[1]), 2);
+	mid_point.push_back(point2d(midpoint.x + normal.x, midpoint.y + normal.y)); //expand the line
+	mid_point.push_back(point2d(midpoint.x - normal.x, midpoint.y - normal.y));
+	v.voronoi_list.push_back(edge(mid_point[0], mid_point[1], points[0], points[1]));
 	return v;
 }
 
@@ -49,29 +61,32 @@ VoronoiDiagram VoronoiDiagram::three_voronoi(vector<point2d> points)
 {
 	vector<point2d> mid_point;
 	VoronoiDiagram v;
-	if (isCollinear(points[0], points[1], points[2]) == true)
+	v.point_list.push_back(points[0]);
+	v.point_list.push_back(points[1]);
+	v.point_list.push_back(points[2]);
+	if (isCollinear(v.point_list[0], v.point_list[1], v.point_list[2]) == true)
 	{
+		points = m.sort(points);
+
 		for (int i = 0; i < 2; i++)
 		{
-			point2d midpoint = m.getMidpoint(points[i], points[i + 1]);
-			point2d normal = m.getNormal(points[i], points[i + 1]);
-			mid_point.push_back(midpoint);
+			point2d midpoint = m.getMidpoint(v.point_list[i], v.point_list[i + 1]);
+			point2d normal = m.Multi(m.getNormal(v.point_list[i], v.point_list[i + 1]), 2);
 			mid_point.push_back(point2d(midpoint.x + normal.x, midpoint.y + normal.y));
-			v.voronoi_list.push_back(edge(points[i], points[i + 1], mid_point[i], mid_point[i + 1]));
+			mid_point.push_back(point2d(midpoint.x - normal.x, midpoint.y - normal.y));
+			v.voronoi_list.push_back(edge(mid_point[i], mid_point[i + 1], v.point_list[i], v.point_list[i + 1]));
 		}
 	}
 	else
 	{
-		for (int i = 0; i < 3; i++)
+		point2d triEx = m.getTriangleExcenterPoint(points[0], points[1], points[2]);
+		points = m.bubblesort(points);
+
+		for (int i = 0; i < points.size(); i++)
 		{
-			for (int j = i + 1; j < 4; j++)
-			{
-				point2d midpoint = m.getMidpoint(points[i], points[j % 3]);
-				point2d normal = m.getNormal(points[i], points[j % 3]);
-				mid_point.push_back(midpoint);
-				mid_point.push_back(point2d(midpoint.x + normal.x, midpoint.y + normal.y));
-				v.voronoi_list.push_back(edge(points[i], points[j % 3], mid_point[i], mid_point[j % 3]));
-			}
+			point2d midpoint = m.getMidpoint(points[i], points[(i + 1) % 3]);
+			point2d normal = m.Multi(m.getNormal(points[i], points[(i + 1) % 3]), 2);
+			v.voronoi_list.push_back(edge(triEx, point2d(midpoint.x + normal.x, midpoint.y + normal.y), points[i], points[(i + 1) % 3]));
 		}
 	}
 	return v;
@@ -100,10 +115,8 @@ vector<vector<point2d>> VoronoiDiagram::divide(vector<point2d> points, vector<po
 	return edge_list;
 }
 
-VoronoiDiagram VoronoiDiagram::merge(VoronoiDiagram vl, VoronoiDiagram vr)
+VoronoiDiagram VoronoiDiagram::merge(VoronoiDiagram vl, VoronoiDiagram vr, VoronoiDiagram v)
 {
-	VoronoiDiagram v;
-
 	//find tangent
 	//vector<point2d> points = vl.point_list;
 	//for (int i = 0; i < vr.point_list.size(); i++) points.push_back(vr.point_list[i]);
@@ -113,176 +126,128 @@ VoronoiDiagram VoronoiDiagram::merge(VoronoiDiagram vl, VoronoiDiagram vr)
 	vector<edge> tangent = GetTangent(chL, chR);
 
 	//find hyper plane
-	vector<edge> hpList;		//Hyper plane
-	point2d p;					//Store the intersection of Hyper plane and voronoi
-	point2d nearPoint;			//first intersection
-	point2d lastNearPoint;		//last intersection
-	edge scan;					//scan the line
-	edge candidate;				//line
-	edge last;					//last line
-	edge hyperPlane;			//Hyper plane now
-	vector<int> eliminate;		//the index needs to be eliminated
-	vector<int> Delete;			//the index needs to be deleted
+	vector<edge> hpList;
+	edge scan;
+	vector<point2d> voronoi;
+	vector<int> voronoi_index;
+	point2d lastmax;
 
-	for (int i = 0; i < vl.point_list.size(); i++) v.point_list.push_back(vl.point_list[i]);
-	for (int i = 0; i < vr.point_list.size(); i++) v.point_list.push_back(vr.point_list[i]);
-	for (int i = 0; i < vl.voronoi_list.size(); i++) v.voronoi_list.push_back(vl.voronoi_list[i]);
-	for (int i = 0; i < vr.voronoi_list.size(); i++) v.voronoi_list.push_back(vr.voronoi_list[i]);
+	for (point2d i : vl.point_list) v.point_list.push_back(i);
+	for (point2d i : vr.point_list) v.point_list.push_back(i);
+	for (edge i : vl.voronoi_list) v.voronoi_list.push_back(i);
+	for (edge i : vr.voronoi_list) v.voronoi_list.push_back(i);
 
-	scan = edge(tangent[0].a, tangent[0].b);
-	lastNearPoint = m.getBisector(scan).a;
-	while (scan.a.x != tangent[0].a.x && scan.a.y != tangent[0].a.y && scan.b.x != tangent[0].b.x && scan.mid_a.x != tangent[0].mid_a.x
-		&& scan.mid_a.y != tangent[0].mid_a.y && scan.mid_b.x != tangent[0].mid_b.x && scan.mid_b.y != tangent[0].mid_b.y)
+	scan = tangent[0];
+	int count = 0;
+
+	while (scan.a.x != tangent[1].a.x || scan.a.y != tangent[1].a.y ||
+		scan.b.x != tangent[1].b.x || scan.b.y != tangent[1].b.y)
 	{
-		hyperPlane = m.getBisector(scan);
+		vector<point2d> candidate_p;
+		vector<int> candidate_index;
+		point2d p;
+		point2d max;
+		edge max_candidate;
+		int max_index;
 
-		nearPoint = NULL;
 		for (int i = 0; i < v.voronoi_list.size(); i++)
 		{
-			if (last.a.x == v.voronoi_list[i].a.x && last.a.y == v.voronoi_list[i].a.y && last.b.x == v.voronoi_list[i].b.x
-				&& last.b.y == v.voronoi_list[i].b.y && last.mid_a.x == v.voronoi_list[i].mid_a.x && last.mid_a.y == v.voronoi_list[i].mid_a.y
-				&& last.mid_b.x == v.voronoi_list[i].mid_b.x && last.mid_b.y == v.voronoi_list[i].mid_b.y)
-				continue;
-
-			p = m.getIntersection(hyperPlane, v.voronoi_list[i]);
-			if (lastNearPoint.y >= p.y)
+			if (count == 0)
 			{
-				//find first intersection
-				if (nearPoint.x == NULL && nearPoint.y == NULL)
-				{
-					nearPoint = p;
-					candidate = v.voronoi_list[i];
-					eliminate.push_back(i);
-					continue;
-				}
-				if (ch.distance(hyperPlane.a, p) < ch.distance(hyperPlane.a, nearPoint))
-				{
-					nearPoint = p;
-					candidate = v.voronoi_list[i];
-					eliminate.push_back(i);
-				}
-			}
-		}
-
-		//draw from the last hyper plane
-		if (lastNearPoint.x != NULL && lastNearPoint.y != NULL) hyperPlane.a = lastNearPoint;
-		hpList.push_back(edge(hyperPlane.a, nearPoint, scan.a, scan.b));
-
-		last = candidate;
-		lastNearPoint = nearPoint;
-
-		//fine next scan line
-		if (scan.a.x == candidate.a.x && scan.a.y == candidate.a.y) scan.a = candidate.b;
-		else if (scan.a.x == candidate.b.x && scan.a.y == candidate.b.y) scan.a = candidate.a;
-		else if (scan.b.x == candidate.a.x && scan.b.y == candidate.a.y) scan.b = candidate.b;
-		else if (scan.b.x == candidate.b.x && scan.b.y == candidate.b.y) scan.b = candidate.a;
-	}
-
-	//上切線等於下切線:共線
-	if (tangent[0].a.x == tangent[1].a.x && tangent[0].a.y == tangent[1].a.y && tangent[0].b.x == tangent[1].b.x &&
-		tangent[0].b.y == tangent[1].b.y && tangent[0].mid_a.x == tangent[1].mid_a.x && tangent[0].mid_a.y == tangent[1].mid_a.y &&
-		tangent[0].mid_b.x == tangent[1].mid_b.x && tangent[0].mid_b.y == tangent[1].mid_b.y)
-		hpList.push_back(edge(m.getBisector(tangent[0]).a, m.getBisector(tangent[0]).b, scan.a, scan.b));
-	else
-		hpList.push_back(edge(nearPoint, m.getBisector(tangent[1]).a, scan.a, scan.b));
-
-	int count = 0;
-	//消線
-	for (int i = 0; i < eliminate.size(); i++)
-	{
-		count = 0;
-		if (m.Cross(hpList[i].a, hpList[i].b, hpList[i + 1].b) >= 0)
-		{
-			if (m.Cross(hpList[i].a, hpList[i].b, v.voronoi_list[eliminate[i]].a) > 0)
-			{
-				for (edge j : v.voronoi_list)
-				{
-					if (j.a.x == v.voronoi_list[eliminate[i]].a.x && j.a.y == v.voronoi_list[eliminate[i]].a.y &&
-						j.b.x != v.voronoi_list[eliminate[i]].b.x && j.b.y != v.voronoi_list[eliminate[i]].b.y)
-					{
-						if (m.Cross(hpList[i].b, j.a, j.b) > 0) Delete.push_back(count);
-					}
-					else if (j.b.x != v.voronoi_list[eliminate[i]].a.x && j.b.y != v.voronoi_list[eliminate[i]].a.y &&
-							j.a.x == v.voronoi_list[eliminate[i]].b.x && j.a.y == v.voronoi_list[eliminate[i]].b.y)
-					{
-						if (m.Cross(hpList[i].b, j.b, j.a) > 0) Delete.push_back(count);
-					}
-					count++;
-				}
-				v.voronoi_list[eliminate[i]].a = hpList[i].b;
+				p = m.getIntersection(scan, v.voronoi_list[i]);
 			}
 			else
 			{
-				for (edge j : v.voronoi_list)
-				{
-					if (j.a.x == v.voronoi_list[eliminate[i]].b.x && j.a.y == v.voronoi_list[eliminate[i]].b.y &&
-						j.b.x != v.voronoi_list[eliminate[i]].a.x && j.b.y != v.voronoi_list[eliminate[i]].a.y)
-					{
-						if (m.Cross(hpList[i].b, j.a, j.b) > 0) Delete.push_back(count);
-					}
-					else if (j.b.x != v.voronoi_list[eliminate[i]].b.x && j.b.y != v.voronoi_list[eliminate[i]].b.y &&
-							j.a.x == v.voronoi_list[eliminate[i]].a.x && j.a.y == v.voronoi_list[eliminate[i]].a.y)
-					{
-						if (m.Cross(hpList[i].b, j.b, j.a) > 0) Delete.push_back(count);
-					}
-					count++;
-				}
-				v.voronoi_list[eliminate[i]].b = hpList[i].b;
+				p = m.getIntersection_normal(scan, v.voronoi_list[i]);
+			}
+			if (p.x != NULL && p.y != NULL)
+			{
+				candidate_p.push_back(p);
+				candidate_index.push_back(i);
 			}
 		}
-		else if (m.Cross(hpList[i].a, hpList[i].b, hpList[i + 1].b) < 0)
+
+		if (lastmax.x == NULL && lastmax.y == NULL)
 		{
-			if (m.Cross(hpList[i].a, hpList[i].b, v.voronoi_list[eliminate[i]].a) < 0)
+			for (int i = 0; i < candidate_p.size(); i++)
 			{
-				for (edge j : v.voronoi_list)
+				if (candidate_p[i].y <= m.getMidpoint(scan.a, scan.b).y)
 				{
-					if (j.a.x == v.voronoi_list[eliminate[i]].a.x && j.a.y == v.voronoi_list[eliminate[i]].a.y &&
-						j.b.x != v.voronoi_list[eliminate[i]].b.x && j.b.y != v.voronoi_list[eliminate[i]].b.y)
-					{
-						if (m.Cross(hpList[i].b, j.a, j.b) > 0) Delete.push_back(count);
-					}
-					else if (j.b.x != v.voronoi_list[eliminate[i]].a.x && j.b.y != v.voronoi_list[eliminate[i]].a.y &&
-						j.a.x == v.voronoi_list[eliminate[i]].b.x && j.a.y == v.voronoi_list[eliminate[i]].b.y)
-					{
-						if (m.Cross(hpList[i].b, j.b, j.a) > 0) Delete.push_back(count);
-					}
-					count++;
+					max_candidate = v.voronoi_list[i];
+					max = candidate_p[i];
+					max_index = i;
+					break;
 				}
-				v.voronoi_list[eliminate[i]].a = hpList[i].b;
 			}
-			else
+			for (int i = 1; i < candidate_p.size(); i++)
 			{
-				for (edge j : v.voronoi_list)
+				if (max.y < candidate_p[i].y && candidate_p[i].y < m.getMidpoint(scan.a, scan.b).y)
 				{
-					if (j.a.x == v.voronoi_list[eliminate[i]].b.x && j.a.y == v.voronoi_list[eliminate[i]].b.y &&
-						j.b.x != v.voronoi_list[eliminate[i]].a.x && j.b.y != v.voronoi_list[eliminate[i]].a.y)
-					{
-						if (m.Cross(hpList[i].b, j.a, j.b) > 0) Delete.push_back(count);
-					}
-					else if (j.b.x != v.voronoi_list[eliminate[i]].b.x && j.b.y != v.voronoi_list[eliminate[i]].b.y &&
-						j.a.x == v.voronoi_list[eliminate[i]].a.x && j.a.y == v.voronoi_list[eliminate[i]].a.y)
-					{
-						if (m.Cross(hpList[i].b, j.b, j.a) > 0) Delete.push_back(count);
-					}
-					count++;
+					max_candidate = v.voronoi_list[i];
+					max = candidate_p[i];
+					max_index = i;
 				}
-				v.voronoi_list[eliminate[i]].b = hpList[i].b;
+				if (max.y == candidate_p[i].y && max.x < candidate_p[i].x)
+				{
+					max_candidate = v.voronoi_list[i];
+					max = candidate_p[i];
+					max_index = i;
+				}
 			}
 		}
+		else
+		{
+			for (int i = 0; i < candidate_p.size(); i++)
+			{
+				if (candidate_p[i].y <= lastmax.y)
+				{
+					max_candidate = v.voronoi_list[i];
+					max = candidate_p[i];
+					max_index = i;
+					break;
+				}
+			}
+			for (int i = 1; i < candidate_p.size(); i++)
+			{
+				if (max.y < candidate_p[i].y && candidate_p[i].y < lastmax.y)
+				{
+					max_candidate = v.voronoi_list[i];
+					max = candidate_p[i];
+					max_index = i;
+				}
+				if (max.y == candidate_p[i].y && max.x < candidate_p[i].x)
+				{
+					max_candidate = v.voronoi_list[i];
+					max = candidate_p[i];
+					max_index = i;
+				}
+			}
+		}
+
+		voronoi.push_back(max);
+		voronoi_index.push_back(max_index);
+		lastmax = max;
+
+		for (int i = 0; i < v.voronoi_list.size(); i++)
+		{
+			bool can = true;
+			for (int j = 0; j < voronoi_index.size(); j++) if (i == voronoi_index[j]) can = false;
+			if (can)
+			{
+				if (m.inLine(max, v.voronoi_list[i]))
+				{
+					scan = v.voronoi_list[i];
+				}
+			}
+		}
+
+		//if (m.inLine(max, tangent[1])) break;
+		count++;
 	}
 
-	vector<edge> delete_edge;
-	count = 0;
-	for (int i : Delete)
+	for (int i = 0; i < voronoi.size(); i++)
 	{
-		if (count != 0) delete_edge.push_back(v.voronoi_list[count]);
-	}
-	v.voronoi_list.clear();
-	v.voronoi_list = delete_edge;
-
-	for (edge i : hpList)
-	{
-		v.voronoi_list.push_back(edge(i.a, i.b, i.mid_a, i.mid_b));
+		v.voronoi_list.push_back(edge(voronoi[i], point2d(0, 0)));
 	}
 
 	return v;
@@ -302,32 +267,17 @@ vector<edge> VoronoiDiagram::GetTangent(vector<point2d> chL, vector<point2d> chR
 	point_list = chL;
 	for (int i = 0; i < chR.size(); i++) point_list.push_back(chR[i]);
 
-	chList = ch.convex_hull(point_list);
-	chList = m.bubblesort(chList);
+	chList = m.sort(point_list);
+	chList = ch.convex_hull(chList);
 
 	//if (m.binary_search(0, chList.size(), chList[0], chL)) cout << "true" << endl;
 	//else cout << "false" << endl;
 
 	for (int i = 0; i < chList.size(); i++)
 	{
-		/*
-		for (int j = 0; j < chL.size(); j++)
-		{
-			for (int k = 0; k < chR.size(); k++)
-			{
-				if (((chList[i].x == chL[j].x && chList[i].y == chL[j].y) && (chList[(i + 1) % chList.size()].x == chR[k].x
-					&& chList[(i + 1) % chList.size()].y == chR[k].y))
-					|| ((chList[i].x == chR[j].x && chList[i].y == chR[j].y) && (chList[(i + 1) % chList.size()].x == chL[k].x
-					&& chList[(i + 1) % chList.size()].y == chL[k].y)))
-					tangent.push_back(edge(chList[i], chList[i + 1 % chList.size()]));
-			}
-		}
-		*/
-		
-		if ((m.binary_search(0, chL.size(), chList[i], chL) && m.binary_search(0, chR.size(), chList[(i + 1) % chList.size()], chR))
-			|| (m.binary_search(0, chR.size(), chList[i], chR) && m.binary_search(0, chL.size(), chList[(i + 1) % chList.size()], chL)))
+		if ((m.search(chList[i], chL) && m.search(chList[(i + 1) % chList.size()], chR))
+			|| (m.search(chList[i], chR) && m.search(chList[(i + 1) % chList.size()], chL)))
 			tangent.push_back(edge(chList[i], chList[(i + 1) % chList.size()]));
 	}
-
 	return tangent;
 }

@@ -85,7 +85,7 @@ vector<point2d> Convex_hull::convex_hull(vector<point2d> coor)
 				isAllCollinear = false;
 				hasbetter = true;
 			}
-			else if (c == 0 && (isNear(coor[chList[m - 1]], coor[i], coor[next]) == true) && i != visited[0])
+			else if (c == 0 && isNear(coor[chList[m - 1]], coor[i], coor[next]) && i != visited[0])
 			{
 				tmp = i;
 			}
@@ -102,7 +102,7 @@ vector<point2d> Convex_hull::convex_hull(vector<point2d> coor)
 		chList.push_back(next);
 		for (int i = 0; i < visited.size(); i++) if (next != i) visited_delete.push_back(i);
 
-		if (visited_delete.size() > 1) next = visited_delete[1];
+		if (visited.size() > 1) next = visited_delete[1];
 		else next = visited_delete[0];
 	}
 
@@ -135,6 +135,6 @@ double Convex_hull::distance(point2d next_point, point2d coor)
 
 bool Convex_hull::isNear(point2d O, point2d A, point2d B)
 {
-	if(distance(O, A) < distance(O, B)) return true;
+	if (distance(O, A) < distance(O, B)) return true;
 	return false;
 }
