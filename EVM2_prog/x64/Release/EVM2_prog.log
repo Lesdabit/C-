@@ -1,4 +1,94 @@
 ﻿  EVM2_Prog_S10959039.cpp
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(36,11): warning C4566: character represented by universal-character-name '\u4F9D' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(36,11): warning C4566: character represented by universal-character-name '\u64DA' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(36,11): warning C4566: character represented by universal-character-name '\u5145' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(36,11): warning C4566: character represented by universal-character-name '\u96FB' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(36,11): warning C4566: character represented by universal-character-name '\u7AD9' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(36,11): warning C4566: character represented by universal-character-name '\u7684' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(36,11): warning C4566: character represented by universal-character-name '\u4F4D' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(36,11): warning C4566: character represented by universal-character-name '\u7F6E' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(36,11): warning C4566: character represented by universal-character-name '\u5EFA' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(36,11): warning C4566: character represented by universal-character-name '\u69CB' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(36,11): warning C4566: character represented by universal-character-name '\u4E00' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(36,11): warning C4566: character represented by universal-character-name '\u500B' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(36,11): warning C4566: character represented by universal-character-name '\U0001D45B' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(37,11): warning C4566: character represented by universal-character-name '\u4F9D' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(37,11): warning C4566: character represented by universal-character-name '\u5E8F' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(37,11): warning C4566: character represented by universal-character-name '\u5217' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(37,11): warning C4566: character represented by universal-character-name '\u51FA' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(37,11): warning C4566: character represented by universal-character-name '\u5145' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(37,11): warning C4566: character represented by universal-character-name '\u96FB' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(37,11): warning C4566: character represented by universal-character-name '\u7AD9' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(37,11): warning C4566: character represented by universal-character-name '\u7684' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(37,11): warning C4566: character represented by universal-character-name '\u670D' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(37,11): warning C4566: character represented by universal-character-name '\u52D9' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(37,11): warning C4566: character represented by universal-character-name '\u7BC4' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(37,11): warning C4566: character represented by universal-character-name '\u570D' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(37,11): warning C4566: character represented by universal-character-name '\u9762' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(37,11): warning C4566: character represented by universal-character-name '\u7A4D' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(37,11): warning C4566: character represented by universal-character-name '\u3002' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(38,11): warning C4566: character represented by universal-character-name '\u627E' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(38,11): warning C4566: character represented by universal-character-name '\u51FA' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(38,11): warning C4566: character represented by universal-character-name '\u96E2' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(38,11): warning C4566: character represented by universal-character-name '\u5145' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(38,11): warning C4566: character represented by universal-character-name '\u96FB' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(38,11): warning C4566: character represented by universal-character-name '\u7AD9' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(38,11): warning C4566: character represented by universal-character-name '\u6700' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(38,11): warning C4566: character represented by universal-character-name '\u9060' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(38,11): warning C4566: character represented by universal-character-name '\u7684' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(38,11): warning C4566: character represented by universal-character-name '\u9EDE' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(38,11): warning C4566: character represented by universal-character-name '\u4EE5' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(38,11): warning C4566: character represented by universal-character-name '\u53CA' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(38,11): warning C4566: character represented by universal-character-name '\u8DDD' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(38,11): warning C4566: character represented by universal-character-name '\u3002' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u6839' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u64DA' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u5728' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u8A72' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u4F4D' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u7F6E' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u5B89' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u88DD' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u4E00' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u500B' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u5145' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u96FB' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u7AD9' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u5247' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u9808' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u539F' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u4F86' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u7684' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u5916' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u52A0' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u9EDE' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u8B8A' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u6210' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u6709' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u8A2D' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u8A08' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u7A0B' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u5F0F' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u6CD5' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u5EFA' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u69CB' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u65B0' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(39,11): warning C4566: character represented by universal-character-name '\u3002' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(40,11): warning C4566: character represented by universal-character-name '\u91CD' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(40,11): warning C4566: character represented by universal-character-name '\u8907' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(40,11): warning C4566: character represented by universal-character-name '\u3001' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(40,11): warning C4566: character represented by universal-character-name '\u76F4' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(40,11): warning C4566: character represented by universal-character-name '\u5230' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(40,11): warning C4566: character represented by universal-character-name '\u6240' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(40,11): warning C4566: character represented by universal-character-name '\u6709' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(40,11): warning C4566: character represented by universal-character-name '\u6700' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(40,11): warning C4566: character represented by universal-character-name '\u9060' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(40,11): warning C4566: character represented by universal-character-name '\u8DDD' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(40,11): warning C4566: character represented by universal-character-name '\u96E2' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(40,11): warning C4566: character represented by universal-character-name '\u5C0F' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(40,11): warning C4566: character represented by universal-character-name '\u65BC' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(40,11): warning C4566: character represented by universal-character-name '\u500B' cannot be represented in the current code page (1252)
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(17,14): warning C4101: 'ch': unreferenced local variable
 C:\Users\he001\source\repos\EVM2_prog\matplotlibcpp.h(1817,57): warning C4244: '=': conversion from 'size_t' to '_Ty', possible loss of data
           with
           [
@@ -6,10 +96,10 @@ C:\Users\he001\source\repos\EVM2_prog\matplotlibcpp.h(1817,57): warning C4244: '
           ]
 C:\Users\he001\source\repos\EVM2_prog\matplotlibcpp.h(2884,38): message : see reference to function template instantiation 'bool matplotlibcpp::plot<double>(const std::vector<double,std::allocator<double>> &,const std::string &)' being compiled
 C:\Users\he001\source\repos\EVM2_prog\matplotlibcpp.h(1009,59): warning C4244: 'argument': conversion from 'const double' to 'long', possible loss of data
-C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(126,79): message : see reference to function template instantiation 'bool matplotlibcpp::scatter<double,double>(const std::vector<double,std::allocator<double>> &,const std::vector<double,std::allocator<double>> &,const double,const std::map<std::string,std::string,std::less<std::string>,std::allocator<std::pair<const std::string,std::string>>> &)' being compiled
-  Edge.cpp
-  Point2D.cpp
-  VoronoiDiagram.cpp
-C:\Users\he001\source\repos\EVM2_prog\VoronoiDiagram.cpp(131,99): error C2059: syntax error: ')'
-C:\Users\he001\source\repos\EVM2_prog\VoronoiDiagram.cpp(132,2): error C2143: syntax error: missing ';' before '{'
-  math.cpp
+C:\Users\he001\source\repos\EVM2_prog\EVM2_Prog_S10959039.cpp(73,65): message : see reference to function template instantiation 'bool matplotlibcpp::scatter<double,double>(const std::vector<double,std::allocator<double>> &,const std::vector<double,std::allocator<double>> &,const double,const std::map<std::string,std::string,std::less<std::string>,std::allocator<std::pair<const std::string,std::string>>> &)' being compiled
+  Generating code
+  222 of 428 functions (51.9%) were compiled, the rest were copied from previous compilation.
+    8 functions were new in current compilation
+    37 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  EVM2_prog.vcxproj -> C:\Users\he001\source\repos\EVM2_prog\x64\Release\EVM2_prog.exe

@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <vector>
 #include <fstream>
 
@@ -29,107 +29,55 @@ int main()
 			vd.point_list.push_back(point2d(x, y));
 		}
 	}
-
-	/*
-	for (int i = 0; i < points.size(); i++)
+	
+	while (true)
 	{
-		cout << points[i].x << " " << points[i].y << endl;
-	}
-	*/
+		int q;
+		cout << "1)依據充電站的位置(建構一個Voronoi Diagram with time complexity O(𝑛log𝑛)." << endl;
+		cout << "2)依序列出充電站的服務範圍(面積)。" << endl;
+		cout << "3)找出離充電站最遠的點以及距離(Largest Empty Circle Problem with Voronoi Diagram, also called toxic waste dump problem)。" << endl;
+		cout << "4)根據Sub-problem(在該位置安裝一個充電站,則須在原來的Voronoi Diagram外加一個點變成有n+1個點的Voronoi Diagram設計一程式法建構該新的Voronoi Diagram。" << endl;
+		cout << "  (重複3、4直到所有最遠距離小於150m(1個tick 1m)" << endl;
+		cin >> q;
 
-	cout << "\n\nAfter sort\n\n";
-
-	// bubble sort to sort points
-	for (int i = 0; i < point_n - 1; i++)
-	{
-		for (int j = 0; j < point_n - i - 1; j++)
+		if (q == 1)
 		{
-			if (vd.point_list[j].x > vd.point_list[j + 1].x)
+			vector<double> coor_x;
+			vector<double> coor_y;
+
+			for (int i = 0; i < point_n; i++)
 			{
-				double temp_x = vd.point_list[j].x;
-				vd.point_list[j].x = vd.point_list[j + 1].x;
-				vd.point_list[j + 1].x = temp_x;
-
-				double temp_y = vd.point_list[j].y;
-				vd.point_list[j].y = vd.point_list[j + 1].y;
-				vd.point_list[j + 1].y = temp_y;
+				//cout << points[i].x << " " << points[i].y << endl;
+				coor_x.push_back(vd.point_list[i].x);
+				coor_y.push_back(vd.point_list[i].y);
 			}
-		}
-	}
 
-	for (int i = 0; i < point_n - 1; i++)
-	{
-		for (int j = 0; j < point_n - i - 1; j++)
-		{
-			if (vd.point_list[j].x == vd.point_list[j + 1].x && vd.point_list[j].y > vd.point_list[j + 1].y)
+			//vd = vd.voronoi(vd.point_list);
+			vector<double> edge_mid_a;
+			vector<double> edge_mid_b;
+
+			for (int i = 0; i < vd.voronoi_list.size(); i++)
 			{
-				double temp_x = vd.point_list[j].x;
-				vd.point_list[j].x = vd.point_list[j + 1].x;
-				vd.point_list[j + 1].x = temp_x;
-
-				double temp_y = vd.point_list[j].y;
-				vd.point_list[j].y = vd.point_list[j + 1].y;
-				vd.point_list[j + 1].y = temp_y;
+				if (i % 2 == 0)
+				{
+					edge_mid_a.push_back(vd.voronoi_list[i].mid_a.x);
+					edge_mid_a.push_back(vd.voronoi_list[i].mid_a.y);
+				}
+				else
+				{
+					edge_mid_b.push_back(vd.voronoi_list[i].mid_b.x);
+					edge_mid_b.push_back(vd.voronoi_list[i].mid_b.y);
+				}
 			}
+
+			plt::scatter(coor_x, coor_y, 25, { {"label", "charge stop"} });
+			//plt::plot(scale_coor_x, scale_coor_y);
+			//plt::plot(vd.voronoi_list, vd.voronoi_list);
+			plt::title("Charge stop map");
+			plt::grid(true);
+			plt::legend();
+			plt::show();
 		}
+
 	}
-
-	
-	
-	for (int i = 0; i < point_n; i++)
-	{
-		cout << vd.point_list[i].x << " " << vd.point_list[i].y << endl;
-	}
-	
-	
-	vector<double> coor_x;
-	vector<double> coor_y;
-
-	for (int i = 0; i < point_n; i++)
-	{
-		//cout << points[i].x << " " << points[i].y << endl;
-		coor_x.push_back(vd.point_list[i].x);
-		coor_y.push_back(vd.point_list[i].y);
-	}
-
-	// convex hull
-	vector<double> scale_coor_x;
-	vector<double> scale_coor_y;
-	vector<point2d> scale = ch.convex_hull(vd.point_list);
-
-	for (int i = 0; i < scale.size(); i++)
-	{
-		scale_coor_x.push_back(scale[i].x);
-		scale_coor_y.push_back(scale[i].y);
-		//cout << ch.scale[i].x << " " << ch.scale[i].y << endl;
-	}
-
-	vd = vd.voronoi(vd.point_list);
-	vector<double> edge_mid_a;
-	vector<double> edge_mid_b;
-
-	for (int i = 0; i < vd.voronoi_list.size(); i++)
-	{
-		if (i % 2 == 0)
-		{
-			edge_mid_a.push_back(vd.voronoi_list[i].mid_a.x);
-			edge_mid_a.push_back(vd.voronoi_list[i].mid_a.y);
-		}
-		else
-		{
-			edge_mid_b.push_back(vd.voronoi_list[i].mid_b.x);
-			edge_mid_b.push_back(vd.voronoi_list[i].mid_b.y);
-		}
-	}
-
-	vector<int> tick = { 0,5,10,15,20,25,30 };
-	plt::scatter(coor_x, coor_y, 25, { {"label", "charge stop"}, {"color", "r"} });
-	//plt::plot(scale_coor_x, scale_coor_y);
-	plt::plot(edge_mid_a, edge_mid_b);
-	plt::title("Charge stop map");
-	plt::xticks(tick);
-	plt::yticks(tick);
-	//plt::grid(true);
-	plt::legend();
-	plt::show();
 }

@@ -53,6 +53,11 @@ double math::Cross(point2d a, point2d b)
 	return a.x * b.y + a.y * b.x;
 }
 
+double math::Cross(point2d o, point2d a, point2d b)
+{
+	return (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
+}
+
 point2d math::Multi(point2d p, double v)
 {
 	return point2d(p.x * v, p.y * v);

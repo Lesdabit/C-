@@ -12,6 +12,7 @@ public:
 	point2d getNormal(point2d a, point2d b);
 	point2d getVector(point2d a, point2d b);
 	double Cross(point2d a, point2d b);
+	double Cross(point2d a, point2d b, point2d c);
 	edge getBisector(edge e);
 	point2d getIntersection(edge e1, edge e2);
 	point2d Multi(point2d p, double v); //vector expand
